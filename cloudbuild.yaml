@@ -1,0 +1,15 @@
+steps:
+  # SSH into the existing instance and execute update script
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'gcloud'
+  timeout: 240s
+  args:
+    - 'compute'
+    - 'ssh'
+    - 'instance-1'  # Replace with your actual instance name
+    - '--zone=us-central1-a'  # Replace with your actual zone
+    - '--project=tranquil-racer-401805'
+    - '--command=/home/sanoj_sudo/update-script.sh'  # Updated to execute the script directly
+
+options:
+  logging: CLOUD_LOGGING_ONLY   # Set the logging option
